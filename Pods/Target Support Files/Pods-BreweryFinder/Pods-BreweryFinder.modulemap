@@ -1,0 +1,6 @@
+framework module Pods_BreweryFinder {
+  umbrella header "Pods-BreweryFinder-umbrella.h"
+
+  export *
+  module * { export * }
+}

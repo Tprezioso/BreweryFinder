@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		201BE6DD1D17AD3CFEDA30EA /* Pods_BreweryFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D176C84871BDACA55C4D3DEB /* Pods_BreweryFinder.framework */; };
 		9FDD07A422D119590023E911 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDD07A322D119590023E911 /* AppDelegate.swift */; };
 		9FDD07A622D119590023E911 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDD07A522D119590023E911 /* ViewController.swift */; };
 		9FDD07A922D119590023E911 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FDD07A722D119590023E911 /* Main.storyboard */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0EC117F201EBEB210665707A /* Pods-BreweryFinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreweryFinder.release.xcconfig"; path = "Target Support Files/Pods-BreweryFinder/Pods-BreweryFinder.release.xcconfig"; sourceTree = "<group>"; };
+		92AAE0C3D792053C74C170FB /* Pods-BreweryFinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreweryFinder.debug.xcconfig"; path = "Target Support Files/Pods-BreweryFinder/Pods-BreweryFinder.debug.xcconfig"; sourceTree = "<group>"; };
 		9FDD07A022D119590023E911 /* BreweryFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreweryFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FDD07A322D119590023E911 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FDD07A522D119590023E911 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		9FDD07AD22D1195A0023E911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9FDD07AF22D1195A0023E911 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FDD07B722D17FE70023E911 /* BreweryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryListTableViewController.swift; sourceTree = "<group>"; };
+		D176C84871BDACA55C4D3DEB /* Pods_BreweryFinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BreweryFinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				201BE6DD1D17AD3CFEDA30EA /* Pods_BreweryFinder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65A0D28572CEF92CF3733BCA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				92AAE0C3D792053C74C170FB /* Pods-BreweryFinder.debug.xcconfig */,
+				0EC117F201EBEB210665707A /* Pods-BreweryFinder.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		9FDD079722D119590023E911 = {
 			isa = PBXGroup;
 			children = (
 				9FDD07A222D119590023E911 /* BreweryFinder */,
 				9FDD07A122D119590023E911 /* Products */,
+				65A0D28572CEF92CF3733BCA /* Pods */,
+				F5E4A3839D9835F055A7269F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +100,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		F5E4A3839D9835F055A7269F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D176C84871BDACA55C4D3DEB /* Pods_BreweryFinder.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -90,9 +115,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FDD07B222D1195A0023E911 /* Build configuration list for PBXNativeTarget "BreweryFinder" */;
 			buildPhases = (
+				55897AF25CAD93C24104193F /* [CP] Check Pods Manifest.lock */,
 				9FDD079C22D119590023E911 /* Sources */,
 				9FDD079D22D119590023E911 /* Frameworks */,
 				9FDD079E22D119590023E911 /* Resources */,
+				2A1F3BFDF82FC7E58EC53D41 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -148,6 +175,55 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2A1F3BFDF82FC7E58EC53D41 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BreweryFinder/Pods-BreweryFinder-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BreweryFinder/Pods-BreweryFinder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		55897AF25CAD93C24104193F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BreweryFinder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9FDD079C22D119590023E911 /* Sources */ = {
@@ -300,6 +376,7 @@
 		};
 		9FDD07B322D1195A0023E911 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92AAE0C3D792053C74C170FB /* Pods-BreweryFinder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -318,6 +395,7 @@
 		};
 		9FDD07B422D1195A0023E911 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0EC117F201EBEB210665707A /* Pods-BreweryFinder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Brewery List Table View Controller-->
+        <!--Breweries-->
         <scene sceneID="JP1-af-Mwt">
             <objects>
                 <tableViewController id="pg1-Nd-OHm" customClass="BreweryListTableViewController" customModule="BreweryFinder" customModuleProvider="target" sceneMemberID="viewController">
@@ -41,7 +41,7 @@
                             <outlet property="delegate" destination="pg1-Nd-OHm" id="bKa-9i-VNf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="DpU-au-JMD"/>
+                    <navigationItem key="navigationItem" title="Breweries" id="DpU-au-JMD"/>
                     <connections>
                         <outlet property="searchBar" destination="GAx-ce-qSe" id="8up-Os-tSk"/>
                     </connections>
@@ -70,8 +70,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c40-GW-vsc" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HgO-E1-V9U">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="HgO-E1-V9U">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

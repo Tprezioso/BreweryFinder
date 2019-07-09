@@ -14,6 +14,7 @@
 		9FDD07AB22D1195A0023E911 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FDD07AA22D1195A0023E911 /* Assets.xcassets */; };
 		9FDD07AE22D1195A0023E911 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FDD07AC22D1195A0023E911 /* LaunchScreen.storyboard */; };
 		9FDD07B822D17FE70023E911 /* BreweryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDD07B722D17FE70023E911 /* BreweryListTableViewController.swift */; };
+		9FDD07BA22D535A10023E911 /* ClientCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDD07B922D535A10023E911 /* ClientCall.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		9FDD07AD22D1195A0023E911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9FDD07AF22D1195A0023E911 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FDD07B722D17FE70023E911 /* BreweryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryListTableViewController.swift; sourceTree = "<group>"; };
+		9FDD07B922D535A10023E911 /* ClientCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCall.swift; sourceTree = "<group>"; };
 		D176C84871BDACA55C4D3DEB /* Pods_BreweryFinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BreweryFinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -48,7 +50,6 @@
 				92AAE0C3D792053C74C170FB /* Pods-BreweryFinder.debug.xcconfig */,
 				0EC117F201EBEB210665707A /* Pods-BreweryFinder.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -74,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				9FDD07A322D119590023E911 /* AppDelegate.swift */,
+				9FDD07BB22D535AC0023E911 /* Modal */,
 				9FDD07B522D1196F0023E911 /* Contoller */,
 				9FDD07B622D119810023E911 /* View */,
 				9FDD07AA22D1195A0023E911 /* Assets.xcassets */,
@@ -98,6 +100,14 @@
 				9FDD07AC22D1195A0023E911 /* LaunchScreen.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		9FDD07BB22D535AC0023E911 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				9FDD07B922D535A10023E911 /* ClientCall.swift */,
+			);
+			path = Modal;
 			sourceTree = "<group>";
 		};
 		F5E4A3839D9835F055A7269F /* Frameworks */ = {
@@ -232,6 +242,7 @@
 			files = (
 				9FDD07A622D119590023E911 /* ViewController.swift in Sources */,
 				9FDD07A422D119590023E911 /* AppDelegate.swift in Sources */,
+				9FDD07BA22D535A10023E911 /* ClientCall.swift in Sources */,
 				9FDD07B822D17FE70023E911 /* BreweryListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

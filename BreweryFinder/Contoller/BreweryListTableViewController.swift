@@ -16,7 +16,9 @@ class BreweryListTableViewController: UITableViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        ClientCall().searchBreweryByName { (json) in
+            print(json)
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -33,7 +35,7 @@ class BreweryListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BreweryCell", for: indexPath)
-
+        cell.textLabel?.text = testArray[indexPath.row]
         // Configure the cell...
 
         return cell

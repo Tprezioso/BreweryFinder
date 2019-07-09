@@ -11,6 +11,8 @@ import UIKit
 class BreweryListTableViewController: UITableViewController {
 
     @IBOutlet weak var searchBar: UITableView!
+    
+    var testArray = ["Steve", "Larry", "Harry", "Dick", "Tom"]
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +28,7 @@ class BreweryListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return testArray.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

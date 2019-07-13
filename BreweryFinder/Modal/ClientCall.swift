@@ -11,7 +11,7 @@ import Alamofire
 
 class ClientCall {
     
-    var breweryByNameURL = "https://api.openbrewerydb.org/breweries?by_name=cooper"
+    var breweryByNameURL = "https://api.openbrewerydb.org/breweries?by_name=single"
     typealias WebServiceResponse = ([[String: Any]]?) -> Void
     
     func searchBreweryByName(completion: @escaping WebServiceResponse) {
@@ -20,7 +20,6 @@ class ClientCall {
             if response.result.isSuccess {
                 let data = response.result.value! as! [[String: AnyObject]]
                 print(data)
-                
                 
             }
         }

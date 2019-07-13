@@ -17,7 +17,7 @@ class BreweryListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ClientCall().searchBreweryByName { (json) in
-            print(json)
+//            print(json!)
         }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

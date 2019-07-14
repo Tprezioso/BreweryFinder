@@ -13,11 +13,21 @@ class BreweryListTableViewController: UITableViewController {
     @IBOutlet weak var searchBar: UITableView!
     
     var testArray = ["Steve", "Larry", "Harry", "Dick", "Tom"]
+    
+    var clientCall = ClientCall()
+    
+    var arr = [[String : Any]]()
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        ClientCall().searchBreweryByName { (json) in
-//            print(json!)
+
+        DispatchQueue.main.async {
+            self.clientCall.searchBreweryByName(completion: { (json) in
+                print(json!)
+                self.arr = json!
+            })
+            
+            self.tableView.reloadData()
         }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -30,12 +40,13 @@ class BreweryListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return testArray.count
+        return arr.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BreweryCell", for: indexPath)
-        cell.textLabel?.text = testArray[indexPath.row]
+        cell.textLabel?.text = arr[indexPath.row]["name"] as! String
+        
         // Configure the cell...
 
         return cell

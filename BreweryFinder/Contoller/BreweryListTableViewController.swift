@@ -12,7 +12,7 @@ class BreweryListTableViewController: UITableViewController {
 
     @IBOutlet weak var searchBar: UITableView!
     
-    var testArray = ["Steve", "Larry", "Harry", "Dick", "Tom"]
+    var testArray = [""]
     
     var clientCall = ClientCall()
     
@@ -21,31 +21,32 @@ class BreweryListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        getData()
+    }
+    
+    func getData() {
         DispatchQueue.main.async {
             self.clientCall.searchBreweryByName(completion: { (json) in
                 print(json!)
                 self.arr = json!
+                print(self.arr.count)
             })
             
             self.tableView.reloadData()
         }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return arr.count
+//        print(arr.count)
+        return self.arr.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BreweryCell", for: indexPath)
-        cell.textLabel?.text = arr[indexPath.row]["name"] as! String
+        cell.textLabel?.text = self.arr[indexPath.row]["name"] as! String?
         
         // Configure the cell...
 

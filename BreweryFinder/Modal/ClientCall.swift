@@ -18,9 +18,10 @@ class ClientCall {
        
         Alamofire.request(breweryByNameURL, method: .get).responseJSON { (response) in
             if response.result.isSuccess {
+                
                 let data = response.result.value! as! [[String: AnyObject]]
 //                print(data[0]["name"])
-                
+                completion(data)
             }
         }
     

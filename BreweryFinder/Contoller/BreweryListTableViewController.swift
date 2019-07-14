@@ -27,12 +27,12 @@ class BreweryListTableViewController: UITableViewController {
     func getData() {
         DispatchQueue.main.async {
             self.clientCall.searchBreweryByName(completion: { (json) in
-                print(json!)
+                //print(json!)
                 self.arr = json!
-                print(self.arr.count)
+                print(self.arr[0]["name"])
+                self.tableView.reloadData()
             })
             
-            self.tableView.reloadData()
         }
     }
 

@@ -27,9 +27,7 @@ class BreweryListTableViewController: UITableViewController {
     func getData() {
         DispatchQueue.main.async {
             self.clientCall.searchBreweryByName(completion: { (json) in
-                //print(json!)
                 self.arr = json!
-                print(self.arr[0]["name"])
                 self.tableView.reloadData()
             })
             
@@ -39,8 +37,6 @@ class BreweryListTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-//        print(arr.count)
         return self.arr.count
     }
 

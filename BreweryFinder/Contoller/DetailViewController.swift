@@ -15,6 +15,9 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationItem.largeTitleDisplayMode = .never
+        
+        self.navigationItem.title = detailBreweryArray["name"] as? String
         print(detailBreweryArray)
     }
 

@@ -18,11 +18,15 @@ class BreweryListTableViewController: UITableViewController {
     
     var arr = [[String : Any]]()
    
+    // Mark: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         getData()
     }
+    
+    // MARK: - Setup
     
     func getData() {
         DispatchQueue.main.async {
@@ -57,6 +61,7 @@ class BreweryListTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
         let  destinationVC = segue.destination as! DetailViewController
 
         if let indexPath = tableView.indexPathForSelectedRow {
@@ -65,9 +70,6 @@ class BreweryListTableViewController: UITableViewController {
     }
 
 }
-
-
-    
 
 // MARK: - Search Bar Methods
 

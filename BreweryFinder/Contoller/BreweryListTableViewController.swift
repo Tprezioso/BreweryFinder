@@ -60,7 +60,7 @@ class BreweryListTableViewController: UITableViewController {
         let  destinationVC = segue.destination as! DetailViewController
 
         if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.detailBreweryArray = arr[indexPath.row] as? [String : Any] ?? ["WTF" : "WTF"]
+            destinationVC.detailBreweryArray = arr[indexPath.row] 
         }
     }
 

@@ -58,12 +58,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fNm-gv-6Gw">
-                                <rect key="frame" x="0.0" y="140" width="414" height="414"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fNm-gv-6Gw">
+                                <rect key="frame" x="0.0" y="140" width="414" height="461"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fNm-gv-6Gw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="53p-bA-KlT"/>
+                            <constraint firstItem="fNm-gv-6Gw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Uvx-2g-8D8"/>
+                            <constraint firstItem="fNm-gv-6Gw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nd7-di-3tz"/>
+                            <constraint firstItem="fNm-gv-6Gw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-77.5" id="tAU-0G-0zo"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>

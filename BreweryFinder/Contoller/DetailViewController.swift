@@ -7,19 +7,22 @@
 //
 
 import UIKit
+import MapKit
 
 class DetailViewController: UIViewController {
 
+    @IBOutlet weak var mapView: MKMapView!
+
     var detailBreweryArray = [String : Any]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setTitle()
+        setTitleForNavBar()
         print(detailBreweryArray)
     }
 
-    func setTitle() {
+    func setTitleForNavBar() {
         navigationItem.largeTitleDisplayMode = .never
         self.navigationItem.title = detailBreweryArray["name"] as? String
 

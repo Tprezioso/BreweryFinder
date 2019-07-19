@@ -47,8 +47,6 @@ class BreweryListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BreweryCell", for: indexPath)
         cell.textLabel?.text = self.arr[indexPath.row]["name"] as! String?
-        
-        // Configure the cell...
 
         return cell
     }

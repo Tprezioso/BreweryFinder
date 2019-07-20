@@ -16,8 +16,8 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     let locationManager = CLLocationManager()
 
     var detailBreweryArray = [String : Any]()
-    var lat = ""
-    var longg = ""
+    var latitude = ""
+    var longitude = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +25,10 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         setTitleForNavBar()
         print(detailBreweryArray)
         
-        lat = (detailBreweryArray["latitude"] as! String)
-        longg = (detailBreweryArray["longitude"] as! String)
+        latitude = (detailBreweryArray["latitude"] as! String)
+        longitude = (detailBreweryArray["longitude"] as! String)
         
-        let initialLocation = CLLocation(latitude: Double(lat)! , longitude: Double(longg)!)
+        let initialLocation = CLLocation(latitude: Double(latitude)! , longitude: Double(longitude)!)
 
         centerMapOnLocation(location: initialLocation)
     }

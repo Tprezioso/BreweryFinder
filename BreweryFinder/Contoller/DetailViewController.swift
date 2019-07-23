@@ -61,6 +61,10 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         self.navigationItem.title = detailBreweryArray["name"] as? String
 
     }
-
+    @IBAction func callBrewery(_ sender: Any) {
+        guard let number = URL(string: "tel://" + "3472183350") else { return }
+        UIApplication.shared.open(number)
+    }
+    
 }
 

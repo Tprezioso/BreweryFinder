@@ -43,7 +43,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Breweries" id="DpU-au-JMD"/>
                     <connections>
-                        <outlet property="searchBar" destination="GAx-ce-qSe" id="8up-Os-tSk"/>
+                        <outlet property="searchBar" destination="8Ln-EB-Xmc" id="QlP-SX-d9e"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vza-uF-22a" userLabel="First Responder" sceneMemberID="firstResponder"/>

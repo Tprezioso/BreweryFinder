@@ -10,28 +10,25 @@ import UIKit
 
 class BreweryListTableViewController: UITableViewController {
 
-    @IBOutlet weak var searchBar: UITableView!
-    
-    var testArray = [""]
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var clientCall = ClientCall()
-    
-    var arr = [[String : Any]]()
+    var searchData = [[String : Any]]()
    
     // Mark: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getData()
+//        getData()
     }
     
-    // MARK: - Setup
+    // MARK: - Retrive Data
     
     func getData() {
         DispatchQueue.main.async {
             self.clientCall.searchBreweryByName(completion: { (json) in
-                self.arr = json!
+                self.searchData = json!
                 self.tableView.reloadData()
             })
             
@@ -41,12 +38,12 @@ class BreweryListTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.arr.count
+        return self.searchData.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BreweryCell", for: indexPath)
-        cell.textLabel?.text = self.arr[indexPath.row]["name"] as! String?
+        cell.textLabel?.text = self.searchData[indexPath.row]["name"] as! String?
 
         return cell
     }
@@ -63,7 +60,7 @@ class BreweryListTableViewController: UITableViewController {
         let  destinationVC = segue.destination as! DetailViewController
 
         if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.detailBreweryArray = arr[indexPath.row] 
+            destinationVC.detailBreweryArray = searchData[indexPath.row] 
         }
     }
 
@@ -73,14 +70,23 @@ class BreweryListTableViewController: UITableViewController {
 
 extension BreweryListTableViewController : UISearchBarDelegate {
     
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        if searchBar.text?.count == 0 {
-//            loadItems()
-//            DispatchQueue.main.async {
-//                searchBar.resignFirstResponder()
-//                self.tableView.reloadData()
-//            }
-//        }
-//    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        self.arr  = arr.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
+        print("working")
+        tableView.reloadData()
+//
+
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            print("working")
+//            getData()
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+                self.tableView.reloadData()
+            }
+        }
+    }
 
 }

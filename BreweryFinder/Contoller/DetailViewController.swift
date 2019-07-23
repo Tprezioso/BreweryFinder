@@ -24,6 +24,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     var longitude = ""
     let annotation = MKPointAnnotation()
 
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,16 +37,21 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         
         self.webSiteLabel.text = detailBreweryArray["website_url"]! as? String
         
-        
+        setMapLocationPin()
+    }
+    
+    // MARK: - Map Setup
+    func setMapLocationPin() {
         latitude = (detailBreweryArray["latitude"] as! String)
         longitude = (detailBreweryArray["longitude"] as! String)
         
         let initialLocation = CLLocation(latitude: Double(latitude)! , longitude: Double(longitude)!)
-
+        
         annotation.coordinate = CLLocationCoordinate2D(latitude: Double(latitude)!, longitude: Double(longitude)!)
         
         mapView.addAnnotation(annotation)
         centerMapOnLocation(location: initialLocation)
+
     }
     
     let regionRadius: CLLocationDistance = 100
@@ -62,7 +68,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
 
     }
    
-    // MARK - : Phone call
+    // MARK: - Phone call
     @IBAction func callBrewery(_ sender: Any) {
         guard let number = URL(string: "tel://" + "3472183350") else { return }
         UIApplication.shared.open(number)

@@ -21,6 +21,10 @@ class BreweryListTableViewController: UITableViewController, CLLocationManagerDe
     
     var locationLat = 0.0
     var locationLong = 0.0
+    
+    var userLat = 0.0
+    var userLong = 0.0
+    
    
     // Mark: - Life Cycle
     
@@ -33,13 +37,19 @@ class BreweryListTableViewController: UITableViewController, CLLocationManagerDe
         self.locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self as? CLLocationManagerDelegate
+            locationManager.delegate = self as CLLocationManagerDelegate
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
         
-        let location = CLLocation(latitude: 37.3321, longitude: -122.0318)
         
+        getData()
+
+    }
+    
+    func getUserCity(latitude: Double, longitude: Double) {
+        let location = CLLocation(latitude: userLat, longitude: userLong)
+        print(location)
         CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
             
             guard let placemark = placemarks?.first else {
@@ -86,15 +96,18 @@ class BreweryListTableViewController: UITableViewController, CLLocationManagerDe
                 self.isoCountryCode = placemark.isoCountryCode ?? ""
             }
         }
-        
-        getData()
+
     }
-    
-    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        userLat = locValue.latitude
+        userLong = locValue.longitude
+        
+        self.getUserCity(latitude: locValue.latitude, longitude: locValue.longitude)
+
+        
+//        print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
     
     // MARK: - Retrive Data

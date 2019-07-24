@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import CoreLocation
 
-class BreweryListTableViewController: UITableViewController {
+
+class BreweryListTableViewController: UITableViewController, CLLocationManagerDelegate {
+
+    let locationManager = CLLocationManager()
 
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -19,8 +23,23 @@ class BreweryListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        getData()
+        
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self as? CLLocationManagerDelegate
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        getData()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
     
     // MARK: - Retrive Data

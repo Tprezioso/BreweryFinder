@@ -11,7 +11,7 @@ import Alamofire
 
 class ClientCall {
     
-    var breweryByNameURL = "https://api.openbrewerydb.org/breweries?by_name=single"
+    var breweryByNameURL = "https://api.openbrewerydb.org/breweries?by_name=a"
     typealias WebServiceResponse = ([[String: Any]]?) -> Void
     
     func searchBreweryByName(completion: @escaping WebServiceResponse) {

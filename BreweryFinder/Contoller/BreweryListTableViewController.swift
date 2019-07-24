@@ -18,6 +18,9 @@ class BreweryListTableViewController: UITableViewController, CLLocationManagerDe
     
     var clientCall = ClientCall()
     var searchData = [[String : Any]]()
+    
+    var locationLat = 0.0
+    var locationLong = 0.0
    
     // Mark: - Life Cycle
     
@@ -34,8 +37,60 @@ class BreweryListTableViewController: UITableViewController, CLLocationManagerDe
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
+        
+        let location = CLLocation(latitude: 37.3321, longitude: -122.0318)
+        
+        CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
+            
+            guard let placemark = placemarks?.first else {
+                let errorString = error?.localizedDescription ?? "Unexpected Error"
+                print("Unable to reverse geocode the given location. Error: \(errorString)")
+                return
+            }
+            
+            let reversedGeoLocation = ReversedGeoLocation(with: placemark)
+            print(reversedGeoLocation.city)
+            // Apple Inc.,
+            // 1 Infinite Loop,
+            // Cupertino, CA 95014
+            // United States
+        }
+        struct ReversedGeoLocation {
+            let name: String            // eg. Apple Inc.
+            let streetName: String      // eg. Infinite Loop
+            let streetNumber: String    // eg. 1
+            let city: String            // eg. Cupertino
+            let state: String           // eg. CA
+            let zipCode: String         // eg. 95014
+            let country: String         // eg. United States
+            let isoCountryCode: String  // eg. US
+            
+            var formattedAddress: String {
+                return """
+                \(name),
+                \(streetNumber) \(streetName),
+                \(city), \(state) \(zipCode)
+                \(country)
+                """
+            }
+            
+            // Handle optionals as needed
+            init(with placemark: CLPlacemark) {
+                self.name           = placemark.name ?? ""
+                self.streetName     = placemark.thoroughfare ?? ""
+                self.streetNumber   = placemark.subThoroughfare ?? ""
+                self.city           = placemark.locality ?? ""
+                self.state          = placemark.administrativeArea ?? ""
+                self.zipCode        = placemark.postalCode ?? ""
+                self.country        = placemark.country ?? ""
+                self.isoCountryCode = placemark.isoCountryCode ?? ""
+            }
+        }
+        
         getData()
     }
+    
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }

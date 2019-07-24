@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 
 
-class BreweryListTableViewController: UITableViewController, CLLocationManagerDelegate {
+class BreweryListTableViewController: UITableViewController {
 
     let locationManager = CLLocationManager()
 
@@ -31,9 +31,15 @@ class BreweryListTableViewController: UITableViewController, CLLocationManagerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        locationAuthorization()
+        getData()
+
+    }
+    
+    // Mark: - Map Stuff
+    func locationAuthorization() {
         self.locationManager.requestAlwaysAuthorization()
         
-        // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
@@ -41,9 +47,6 @@ class BreweryListTableViewController: UITableViewController, CLLocationManagerDe
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
-        
-        
-        getData()
 
     }
     
@@ -65,6 +68,7 @@ class BreweryListTableViewController: UITableViewController, CLLocationManagerDe
             // Cupertino, CA 95014
             // United States
         }
+        
         struct ReversedGeoLocation {
             let name: String            // eg. Apple Inc.
             let streetName: String      // eg. Infinite Loop
@@ -82,7 +86,7 @@ class BreweryListTableViewController: UITableViewController, CLLocationManagerDe
                 \(city), \(state) \(zipCode)
                 \(country)
                 """
-            }
+        }
             
             // Handle optionals as needed
             init(with placemark: CLPlacemark) {
@@ -97,17 +101,6 @@ class BreweryListTableViewController: UITableViewController, CLLocationManagerDe
             }
         }
 
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        userLat = locValue.latitude
-        userLong = locValue.longitude
-        
-        self.getUserCity(latitude: locValue.latitude, longitude: locValue.longitude)
-
-        
-//        print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
     
     // MARK: - Retrive Data
@@ -175,5 +168,21 @@ extension BreweryListTableViewController : UISearchBarDelegate {
             }
         }
     }
+
+}
+
+extension BreweryListTableViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        userLat = locValue.latitude
+        userLong = locValue.longitude
+        
+        self.getUserCity(latitude: locValue.latitude, longitude: locValue.longitude)
+        
+        
+        //        print("locations = \(locValue.latitude) \(locValue.longitude)")
+    }
+    
 
 }

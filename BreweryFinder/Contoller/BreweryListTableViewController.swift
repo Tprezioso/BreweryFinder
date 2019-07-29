@@ -52,7 +52,7 @@ class BreweryListTableViewController: UITableViewController {
     
     func getUserCity(latitude: Double, longitude: Double) {
         let location = CLLocation(latitude: userLat, longitude: userLong)
-        print(location)
+//        print(location)
         CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
             
             guard let placemark = placemarks?.first else {

@@ -32,10 +32,6 @@ class BreweryListTableViewController: UITableViewController {
         super.viewDidLoad()
         
         locationAuthorization()
-       
-
-//        getData()
-
     }
     
     // Mark: - Map Stuff
@@ -62,29 +58,21 @@ class BreweryListTableViewController: UITableViewController {
                 return
             }
             
-            
             let reversedGeoLocation = ReversedGeoLocation(with: placemark)
             print(reversedGeoLocation.city)
-            // Apple Inc.,
-            // 1 Infinite Loop,
-            // Cupertino, CA 95014
-            // United States reversedGeoLocation.city reversedGeoLocation.state
 
-            self.clientCall.searchBreweryByCity(city: "astoria", state:"new_york" , completion: { (json) in
-                self.searchData = json!
-                self.tableView.reloadData()
-            })
+            self.getUserLoacationData(city: reversedGeoLocation.city, state: reversedGeoLocation.state)
         }
 
         struct ReversedGeoLocation {
-            let name: String            // eg. Apple Inc.
-            let streetName: String      // eg. Infinite Loop
-            let streetNumber: String    // eg. 1
-            let city: String            // eg. Cupertino
-            let state: String           // eg. CA
-            let zipCode: String         // eg. 95014
-            let country: String         // eg. United States
-            let isoCountryCode: String  // eg. US
+            let name: String
+            let streetName: String
+            let streetNumber: String
+            let city: String
+            let state: String
+            let zipCode: String
+            let country: String
+            let isoCountryCode: String
             
             var formattedAddress: String {
                 return """
@@ -112,12 +100,17 @@ class BreweryListTableViewController: UITableViewController {
     
     // MARK: - Retrive Data
     
-    func getData() {
+    func getUserLoacationData(city: String, state: String) {
         DispatchQueue.main.async {
-            self.clientCall.searchBreweryByName(completion: { (json) in
+            self.clientCall.searchBreweryByCity(city: city, state: state , completion: { (json) in
                 self.searchData = json!
                 self.tableView.reloadData()
             })
+
+//            self.clientCall.searchBreweryByName(completion: { (json) in
+//                self.searchData = json!
+//                self.tableView.reloadData()
+//            })
             
         }
     }
@@ -185,8 +178,6 @@ extension BreweryListTableViewController: CLLocationManagerDelegate {
         userLat = locValue.latitude
         userLong = locValue.longitude
          self.getUserCity(latitude: userLat, longitude: userLong)
-        //        print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
-    
 
 }

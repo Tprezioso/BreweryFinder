@@ -32,7 +32,9 @@ class BreweryListTableViewController: UITableViewController {
         super.viewDidLoad()
         
         locationAuthorization()
-        getData()
+       
+
+//        getData()
 
     }
     
@@ -52,7 +54,6 @@ class BreweryListTableViewController: UITableViewController {
     
     func getUserCity(latitude: Double, longitude: Double) {
         let location = CLLocation(latitude: userLat, longitude: userLong)
-//        print(location)
         CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
             
             guard let placemark = placemarks?.first else {
@@ -61,14 +62,20 @@ class BreweryListTableViewController: UITableViewController {
                 return
             }
             
+            
             let reversedGeoLocation = ReversedGeoLocation(with: placemark)
             print(reversedGeoLocation.city)
             // Apple Inc.,
             // 1 Infinite Loop,
             // Cupertino, CA 95014
-            // United States
+            // United States reversedGeoLocation.city reversedGeoLocation.state
+
+            self.clientCall.searchBreweryByCity(city: "astoria", state:"new_york" , completion: { (json) in
+                self.searchData = json!
+                self.tableView.reloadData()
+            })
         }
-        
+
         struct ReversedGeoLocation {
             let name: String            // eg. Apple Inc.
             let streetName: String      // eg. Infinite Loop
@@ -177,10 +184,7 @@ extension BreweryListTableViewController: CLLocationManagerDelegate {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         userLat = locValue.latitude
         userLong = locValue.longitude
-        
-        self.getUserCity(latitude: locValue.latitude, longitude: locValue.longitude)
-        
-        
+         self.getUserCity(latitude: userLat, longitude: userLong)
         //        print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
     

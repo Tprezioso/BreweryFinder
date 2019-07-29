@@ -31,6 +31,14 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         setTitleForNavBar()
         print(detailBreweryArray)
         self.nameLabel.text = "\(String(describing: detailBreweryArray["name"]!))"
+
+//        return """
+//        \(name),
+//        \(streetNumber) \(streetName),
+//        \(city), \(state) \(zipCode)
+//        \(country)
+//        """
+
         self.detailLabel.text = "\(detailBreweryArray["street"]!)\n\(detailBreweryArray["city"]!),\(detailBreweryArray["state"]!) \n \(detailBreweryArray["postal_code"]!)  \(detailBreweryArray["country"]!)"
         
         self.phoneNumber.text = detailBreweryArray["phone"]! as? String

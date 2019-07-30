@@ -9,7 +9,6 @@
 import UIKit
 import CoreLocation
 
-
 class BreweryListTableViewController: UITableViewController {
 
     let locationManager = CLLocationManager()
@@ -19,12 +18,8 @@ class BreweryListTableViewController: UITableViewController {
     var clientCall = ClientCall()
     var searchData = [[String : Any]]()
     
-    var locationLat = 0.0
-    var locationLong = 0.0
-    
     var userLat = 0.0
     var userLong = 0.0
-    
    
     // Mark: - Life Cycle
     
@@ -37,7 +32,6 @@ class BreweryListTableViewController: UITableViewController {
     // Mark: - Map Stuff
     func locationAuthorization() {
         self.locationManager.requestAlwaysAuthorization()
-        
         self.locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {

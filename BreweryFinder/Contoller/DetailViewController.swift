@@ -14,8 +14,8 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var webSiteLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UIButton!
     
     let locationManager = CLLocationManager()
 
@@ -27,7 +27,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setTitleForNavBar()
         print(detailBreweryArray)
         self.nameLabel.text = "\(String(describing: detailBreweryArray["name"]!))"
@@ -41,8 +41,8 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
 
         self.detailLabel.text = "\(detailBreweryArray["street"]!)\n\(detailBreweryArray["city"]!),\(detailBreweryArray["state"]!) \n \(detailBreweryArray["postal_code"]!)  \(detailBreweryArray["country"]!)"
         
-        self.phoneNumber.text = detailBreweryArray["phone"]! as? String
-        
+        self.phoneLabel.setTitle(detailBreweryArray["phone"] as? String, for: .normal)
+
         self.webSiteLabel.text = detailBreweryArray["website_url"]! as? String
         
         setMapLocationPin()
@@ -50,7 +50,6 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     // MARK: - Map Setup
     
-    #warning("need to fix pin title")
     func setMapLocationPin() {
         let location = "\(detailBreweryArray["street"]!), \(detailBreweryArray["state"]!), \(detailBreweryArray["postal_code"]!)"
         let geocoder = CLGeocoder()
@@ -58,12 +57,16 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             if let placemark = placemarks?.first, let location = placemark.location {
                 let mark = MKPlacemark(placemark: placemark)
                 
+                self!.annotation.coordinate = mark.coordinate
+                self!.annotation.title = "\(self!.detailBreweryArray["name"]!)"
+                
                 if var region = self?.mapView.region {
                     region.center = location.coordinate
                     region.span.longitudeDelta = 0.001
                     region.span.latitudeDelta = 0.001
+
                     self?.mapView.setRegion(region, animated: true)
-                    self?.mapView.addAnnotation(mark)
+                    self?.mapView.addAnnotation(self!.annotation)
                 }
             }
         }

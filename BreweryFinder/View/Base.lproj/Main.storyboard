@@ -59,10 +59,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fNm-gv-6Gw">
-                                <rect key="frame" x="0.0" y="140" width="414" height="461.5"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="510"/>
                             </mapView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="6so-Je-Bs8">
-                                <rect key="frame" x="20" y="609.5" width="374" height="244.5"/>
+                                <rect key="frame" x="20" y="658" width="374" height="196"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hos-tk-eh1">
                                         <rect key="frame" x="0.0" y="0.0" width="52.5" height="41"/>
@@ -80,20 +80,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cS9-yW-3sn">
-                                        <rect key="frame" x="0.0" y="117.5" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="0.0" y="117.5" width="30" height="30"/>
                                         <connections>
                                             <action selector="callBrewery:" destination="BYZ-38-t0r" eventType="touchUpInside" id="frS-8T-Jzk"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqq-P6-CLm">
-                                        <rect key="frame" x="0.0" y="175.5" width="42" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UqQ-n8-zw2">
-                                        <rect key="frame" x="0.0" y="224" width="42" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="175.5" width="42" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -119,7 +112,7 @@
                         <outlet property="detailLabel" destination="Lzu-Pg-hZD" id="6Kq-EQ-hcT"/>
                         <outlet property="mapView" destination="fNm-gv-6Gw" id="XEf-ha-jXc"/>
                         <outlet property="nameLabel" destination="hos-tk-eh1" id="8kR-0i-N7T"/>
-                        <outlet property="phoneNumber" destination="wqq-P6-CLm" id="Rxi-HI-jpN"/>
+                        <outlet property="phoneLabel" destination="cS9-yW-3sn" id="6hK-va-5XN"/>
                         <outlet property="webSiteLabel" destination="UqQ-n8-zw2" id="daX-Xn-J7F"/>
                     </connections>
                 </viewController>

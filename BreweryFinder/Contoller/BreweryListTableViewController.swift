@@ -54,8 +54,10 @@ class BreweryListTableViewController: UITableViewController {
             
             let reversedGeoLocation = ReversedGeoLocation(with: placemark)
             print(reversedGeoLocation.city)
-
-            self.getUserLoacationData(city: reversedGeoLocation.city, state: reversedGeoLocation.state)
+            
+            // Code below removed for testing!
+            // reversedGeoLocation.city reversedGeoLocation.state
+            self.getUserLoacationData(city: "brooklyn", state: "new_york")
         }
 
         struct ReversedGeoLocation {

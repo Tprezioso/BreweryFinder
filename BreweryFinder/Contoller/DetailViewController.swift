@@ -49,16 +49,25 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     }
     
     // MARK: - Map Setup
+    
+    #warning("need to fix pin title")
     func setMapLocationPin() {
-        latitude = (detailBreweryArray["latitude"] as! String)
-        longitude = (detailBreweryArray["longitude"] as! String)
+        let location = "\(detailBreweryArray["street"]!), \(detailBreweryArray["state"]!), \(detailBreweryArray["postal_code"]!)"
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(location) { [weak self] placemarks, error in
+            if let placemark = placemarks?.first, let location = placemark.location {
+                let mark = MKPlacemark(placemark: placemark)
+                
+                if var region = self?.mapView.region {
+                    region.center = location.coordinate
+                    region.span.longitudeDelta = 0.001
+                    region.span.latitudeDelta = 0.001
+                    self?.mapView.setRegion(region, animated: true)
+                    self?.mapView.addAnnotation(mark)
+                }
+            }
+        }
         
-        let initialLocation = CLLocation(latitude: Double(latitude)! , longitude: Double(longitude)!)
-        
-        annotation.coordinate = CLLocationCoordinate2D(latitude: Double(latitude)!, longitude: Double(longitude)!)
-        
-        mapView.addAnnotation(annotation)
-        centerMapOnLocation(location: initialLocation)
 
     }
     

@@ -150,7 +150,7 @@ extension BreweryListTableViewController : UISearchBarDelegate {
 //        self.arr  = arr.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
         print("working")
         tableView.reloadData()
-//
+        searchBar.resignFirstResponder()
 
     }
     
@@ -159,7 +159,7 @@ extension BreweryListTableViewController : UISearchBarDelegate {
             print("working")
 //            getData()
             DispatchQueue.main.async {
-                searchBar.resignFirstResponder()
+                
                 self.tableView.reloadData()
             }
         }

@@ -25,7 +25,7 @@ class BreweryListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        searchBar.delegate = self
         locationAuthorization()
     }
     
@@ -146,23 +146,24 @@ class BreweryListTableViewController: UITableViewController {
 
 extension BreweryListTableViewController : UISearchBarDelegate {
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        self.arr  = arr.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
-        print("working")
-        tableView.reloadData()
-        searchBar.resignFirstResponder()
-
-    }
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
         if searchBar.text?.count == 0 {
-            print("working")
+            print("searchText \(searchText)")
 //            getData()
             DispatchQueue.main.async {
-                
                 self.tableView.reloadData()
             }
         }
+    
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //        self.searchData["name"] = searchData.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
+        print("searchText \(String(describing: searchBar.text))")
+        //        tableView.reloadData()
+        //        searchBar.resignFirstResponder()
+        
     }
 
 }

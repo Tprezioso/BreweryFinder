@@ -18,14 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search Breweries" id="8Ln-EB-Xmc">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BreweryCell" id="1Tq-MB-Q9r">
-                                <rect key="frame" x="0.0" y="72" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Tq-MB-Q9r" id="4sk-Rv-znK">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -41,14 +36,40 @@
                             <outlet property="delegate" destination="pg1-Nd-OHm" id="bKa-9i-VNf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Breweries" id="DpU-au-JMD"/>
-                    <connections>
-                        <outlet property="searchBar" destination="8Ln-EB-Xmc" id="QlP-SX-d9e"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Breweries" id="DpU-au-JMD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="l6Z-Pj-CX7">
+                            <connections>
+                                <action selector="searchButtonPressed:" destination="pg1-Nd-OHm" id="xIQ-a4-cUa"/>
+                                <segue destination="7g8-XA-oA9" kind="show" identifier="search" id="VNb-jm-48j"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vza-uF-22a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="150.72463768115944" y="20.758928571428569"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="Bv5-ZD-dHb">
+            <objects>
+                <viewController id="7g8-XA-oA9" customClass="SearchViewController" customModule="BreweryFinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qFX-gn-vMe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search Breweries" translatesAutoresizingMaskIntoConstraints="NO" id="8Ln-EB-Xmc">
+                                <rect key="frame" x="0.0" y="140" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="dlf-Nf-yDY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JFI-um-aBP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="939" y="-653"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="tne-QT-ifu">

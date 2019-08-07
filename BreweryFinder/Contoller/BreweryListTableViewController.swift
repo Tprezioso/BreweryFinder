@@ -25,7 +25,7 @@ class BreweryListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.delegate = self
+        //searchBar.delegate = self
         locationAuthorization()
     }
     
@@ -130,13 +130,18 @@ class BreweryListTableViewController: UITableViewController {
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier != "search" {
+            let  destinationVC = segue.destination as! DetailViewController
 
-        let  destinationVC = segue.destination as! DetailViewController
+            if let indexPath = tableView.indexPathForSelectedRow {
+                destinationVC.detailBreweryArray = searchData[indexPath.row]
+            } else {
+                performSegue(withIdentifier: "search", sender: self)
+            }
 
-        if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.detailBreweryArray = searchData[indexPath.row] 
         }
     }
 

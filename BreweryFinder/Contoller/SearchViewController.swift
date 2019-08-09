@@ -9,11 +9,13 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-
+    @IBOutlet weak var breweryNameTextfield: UITextField!
+    @IBOutlet weak var breweryCityTextfield: UITextField!
+    @IBOutlet weak var breweryStateTextfield: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
 
@@ -26,5 +28,8 @@ class SearchViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func searchButtonPressed(_ sender: Any) {
+    
+    }
+    
 }

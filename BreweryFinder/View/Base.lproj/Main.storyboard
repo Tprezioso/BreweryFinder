@@ -121,6 +121,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                         <state key="normal" title="Search"/>
+                                        <connections>
+                                            <action selector="searchButtonPressed:" destination="7g8-XA-oA9" eventType="touchUpInside" id="vTD-mh-bn7"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -133,6 +136,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dlf-Nf-yDY"/>
                     </view>
+                    <connections>
+                        <outlet property="breweryCityTextfield" destination="zuu-p7-DxS" id="CKs-F6-sD9"/>
+                        <outlet property="breweryNameTextfield" destination="V7t-S7-vgt" id="MRU-V1-5Nz"/>
+                        <outlet property="breweryStateTextfield" destination="Vb6-aJ-Yqm" id="Oc1-xJ-fCI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JFI-um-aBP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

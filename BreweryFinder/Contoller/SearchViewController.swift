@@ -16,6 +16,10 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        breweryNameTextfield.delegate = self
+        breweryCityTextfield.delegate = self
+        breweryStateTextfield.delegate = self
+        
     }
     
 
@@ -32,4 +36,19 @@ class SearchViewController: UIViewController {
     
     }
     
+    // MARK: - Touch Method for Keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        breweryNameTextfield.resignFirstResponder()
+        breweryCityTextfield.resignFirstResponder()
+        breweryStateTextfield.resignFirstResponder()
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension SearchViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
 }

@@ -130,8 +130,6 @@ class BreweryListTableViewController: UITableViewController {
 
     // MARK: - Navigation
 
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier != "search" {
             let  destinationVC = segue.destination as! DetailViewController
@@ -143,32 +141,6 @@ class BreweryListTableViewController: UITableViewController {
             }
 
         }
-    }
-
-}
-
-// MARK: - Search Bar Methods
-
-extension BreweryListTableViewController : UISearchBarDelegate {
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
-        if searchBar.text?.count == 0 {
-            print("searchText \(searchText)")
-//            getData()
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //        self.searchData["name"] = searchData.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
-        print("searchText \(String(describing: searchBar.text))")
-        //        tableView.reloadData()
-        //        searchBar.resignFirstResponder()
-        
     }
 
 }

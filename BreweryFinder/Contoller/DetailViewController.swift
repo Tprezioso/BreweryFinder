@@ -23,6 +23,12 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     var latitude = ""
     var longitude = ""
     let annotation = MKPointAnnotation()
+    
+    var searchBreweryName = ""
+    var searchBreweryState = ""
+    var searchBreweryCity = ""
+    
+    weak var breweryList: BreweryListTableViewController!
 
     // MARK: - Life Cycle
     override func viewDidLoad() {

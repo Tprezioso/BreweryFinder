@@ -13,6 +13,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var breweryCityTextfield: UITextField!
     @IBOutlet weak var breweryStateTextfield: UITextField!
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +33,8 @@ class SearchViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: - Actions
     @IBAction func searchButtonPressed(_ sender: Any) {
     
     }
@@ -44,7 +47,7 @@ class SearchViewController: UIViewController {
     }
 }
 
-// MARK: - UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

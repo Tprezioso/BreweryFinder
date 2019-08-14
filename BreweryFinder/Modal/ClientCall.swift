@@ -15,6 +15,7 @@ class ClientCall {
     
     typealias WebServiceResponse = ([[String: Any]]?) -> Void
     
+    // MARK: - Search by Brewery Name
     func searchBreweryByName(completion: @escaping WebServiceResponse) {
        
         Alamofire.request(breweryByNameURL, method: .get).responseJSON { (response) in
@@ -28,6 +29,7 @@ class ClientCall {
     
     }
     
+    // MARK: - Search by City and State
     #warning("This need to be fixed to get a list of breweries for user on load")
     
     func searchBreweryByCity(city: String, state: String, completion: @escaping WebServiceResponse) {
@@ -35,13 +37,11 @@ class ClientCall {
 
         Alamofire.request(breweryByCityURL, method: .get).responseJSON { (response) in
             if response.result.isSuccess {
-                
                 let data = response.result.value! as! [[String: AnyObject]]
                 //                print(data[0]["name"])
                 completion(data)
             }
         }
-
     }
     
 }

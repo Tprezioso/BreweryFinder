@@ -136,11 +136,20 @@ class BreweryListTableViewController: UITableViewController {
 
             if let indexPath = tableView.indexPathForSelectedRow {
                 destinationVC.detailBreweryArray = searchData[indexPath.row]
-            } else {
-                performSegue(withIdentifier: "search", sender: self)
+            } else if segue.identifier == "search"{
+                let searchVC = segue.destination as! SearchViewController
+                searchVC.delegate = self as? SearchViewControllerDelegate
+                
             }
 
         }
+        
+    }
+    
+    
+    
+    func update(_ name: String) {
+        print(name)
     }
 
 }

@@ -8,10 +8,20 @@
 
 import UIKit
 
+protocol SearchViewControllerDelegate: AnyObject {
+    func update(_ name: String)
+}
+
 class SearchViewController: UIViewController {
     @IBOutlet weak var breweryNameTextfield: UITextField!
     @IBOutlet weak var breweryCityTextfield: UITextField!
     @IBOutlet weak var breweryStateTextfield: UITextField!
+    
+    var searchBreweryName = ""
+    var searchBreweryState = ""
+    var searchBreweryCity = ""
+    
+    weak var delegate: SearchViewControllerDelegate!
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -35,8 +45,21 @@ class SearchViewController: UIViewController {
     */
     
     // MARK: - Actions
-    @IBAction func searchButtonPressed(_ sender: Any) {
+
     
+    @IBAction func searchButtonPressed(_ sender: Any) {
+        print("hello")
+        if let delegate = delegate{
+            delegate.update("cookie")
+       
+        }
+ _ = navigationController?.popViewController(animated: true)
+        //        if let breweryListViewController = unwind(for: source, towards: BreweryListTableViewController) {
+//            self.breweryNameTextfield.text = breweryListViewController.contact
+//            if let name = self.breweryCityTextfield.text {
+//                delegate?.update(name)
+//            }
+//        }
     }
     
     // MARK: - Touch Method for Keyboard

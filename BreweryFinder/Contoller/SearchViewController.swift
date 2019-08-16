@@ -17,10 +17,6 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var breweryCityTextfield: UITextField!
     @IBOutlet weak var breweryStateTextfield: UITextField!
     
-    var searchBreweryName = ""
-    var searchBreweryState = ""
-    var searchBreweryCity = ""
-    
     weak var delegate: SearchViewControllerDelegate!
     
     // MARK: - Life Cycle
@@ -45,7 +41,10 @@ class SearchViewController: UIViewController {
     */
     
     // MARK: - Actions
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destVC = segue.destination as! BreweryListTableViewController
+        destVC.searchBreweryName = breweryNameTextfield.text!
+    }
     
     @IBAction func searchButtonPressed(_ sender: Any) {
         print("hello")

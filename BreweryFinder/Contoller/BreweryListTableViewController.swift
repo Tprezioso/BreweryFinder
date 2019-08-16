@@ -20,13 +20,22 @@ class BreweryListTableViewController: UITableViewController {
     
     var userLat = 0.0
     var userLong = 0.0
-   
+    
+    var searchBreweryName = ""
+    var searchBreweryState = ""
+    var searchBreweryCity = ""
+    
     // Mark: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //searchBar.delegate = self
         locationAuthorization()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print(searchBreweryName)
     }
     
     // Mark: - Map Stuff
@@ -146,7 +155,10 @@ class BreweryListTableViewController: UITableViewController {
         
     }
     
-    
+    @IBAction func unwindToBreweryList(_ unwindSegue: UIStoryboardSegue) {
+        let sourceViewController = unwindSegue.source
+        // Use data from the view controller which initiated the unwind segue
+    }
     
     func update(_ name: String) {
         print(name)

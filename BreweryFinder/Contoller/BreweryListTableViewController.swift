@@ -12,14 +12,11 @@ import CoreLocation
 class BreweryListTableViewController: UITableViewController {
 
     let locationManager = CLLocationManager()
-
-    @IBOutlet weak var searchBar: UISearchBar!
-    
-    var clientCall = ClientCall()
-    var searchData = [[String : Any]]()
-    
     var userLat = 0.0
     var userLong = 0.0
+
+    var clientCall = ClientCall()
+    var searchData = [[String : Any]]()
     
     var searchBreweryName = ""
     var searchBreweryState = ""
@@ -29,12 +26,12 @@ class BreweryListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //searchBar.delegate = self
         locationAuthorization()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        // This is where you need to add the call to search api and reload tableview
         print(searchBreweryName)
     }
     
@@ -64,8 +61,9 @@ class BreweryListTableViewController: UITableViewController {
             let reversedGeoLocation = ReversedGeoLocation(with: placemark)
             print(reversedGeoLocation.city)
             
-            // Code below removed for testing!
+            // Code below replace params when done testing!
             // reversedGeoLocation.city reversedGeoLocation.state
+            // Testing data in line below ...
             self.getUserLoacationData(city: "brooklyn", state: "new_york")
         }
 
@@ -111,13 +109,8 @@ class BreweryListTableViewController: UITableViewController {
                 self.searchData = json!
                 self.tableView.reloadData()
             })
-
-//            self.clientCall.searchBreweryByName(completion: { (json) in
-//                self.searchData = json!
-//                self.tableView.reloadData()
-//            })
-            
         }
+    
     }
 
     // MARK: - Table view data source
@@ -145,7 +138,7 @@ class BreweryListTableViewController: UITableViewController {
 
             if let indexPath = tableView.indexPathForSelectedRow {
                 destinationVC.detailBreweryArray = searchData[indexPath.row]
-            } else if segue.identifier == "search"{
+            } else if segue.identifier == "search" {
                 let searchVC = segue.destination as! SearchViewController
                 searchVC.delegate = self as? SearchViewControllerDelegate
                 

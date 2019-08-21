@@ -33,6 +33,9 @@ class BreweryListTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         // This is where you need to add the call to search api and reload tableview
         print(searchBreweryName)
+        print(searchBreweryCity)
+        print(searchBreweryState)
+        getUserLoacationData(city: searchBreweryCity, state: searchBreweryState)
     }
     
     // Mark: - Map Stuff
@@ -48,6 +51,7 @@ class BreweryListTableViewController: UITableViewController {
 
     }
     
+    
     func getUserCity(latitude: Double, longitude: Double) {
         let location = CLLocation(latitude: userLat, longitude: userLong)
         CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
@@ -60,11 +64,13 @@ class BreweryListTableViewController: UITableViewController {
             
             let reversedGeoLocation = ReversedGeoLocation(with: placemark)
             print(reversedGeoLocation.city)
-            
+
+            // TODO: - need to use another use global variable to fix constant call of get user
+
             // Code below replace params when done testing!
             // reversedGeoLocation.city reversedGeoLocation.state
             // Testing data in line below ...
-            self.getUserLoacationData(city: "brooklyn", state: "new_york")
+            // self.getUserLoacationData(city: "brooklyn", state: "new_york")
         }
 
         struct ReversedGeoLocation {
@@ -144,9 +150,8 @@ class BreweryListTableViewController: UITableViewController {
     }
     
     @IBAction func unwindToBreweryList(_ unwindSegue: UIStoryboardSegue) {
-        let sourceViewController = unwindSegue.source
+        _ = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
-        print()
     }
     
 }

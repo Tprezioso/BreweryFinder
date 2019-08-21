@@ -30,7 +30,8 @@ class SearchViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destVC = segue.destination as! BreweryListTableViewController
         destVC.searchBreweryName = breweryNameTextfield.text!
-    
+        destVC.searchBreweryCity = breweryCityTextfield.text!
+        destVC.searchBreweryState = breweryStateTextfield.text!
     }
 
     // MARK: - Actions

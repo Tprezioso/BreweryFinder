@@ -14,7 +14,10 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var breweryCityTextfield: UITextField!
     @IBOutlet weak var breweryStateTextfield: UITextField!
     
-    
+    var name = ""
+    var city = ""
+    var state = ""
+
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +28,24 @@ class SearchViewController: UIViewController {
         
     }
     
+    func convertForSearch() {
+        self.name = breweryNameTextfield.text!.lowercased()
+        self.city = breweryCityTextfield.text!.lowercased()
+        self.state = breweryStateTextfield.text!.lowercased()
+        
+        self.name = name.replacingOccurrences(of: " ", with: "_")
+        self.city = city.replacingOccurrences(of: " ", with: "_")
+        self.state = state.replacingOccurrences(of: " ", with: "_")
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        convertForSearch()
         let destVC = segue.destination as! BreweryListTableViewController
-        destVC.searchBreweryName = breweryNameTextfield.text!
-        destVC.searchBreweryCity = breweryCityTextfield.text!
-        destVC.searchBreweryState = breweryStateTextfield.text!
+        destVC.searchBreweryName = self.name
+        destVC.searchBreweryCity = self.city
+        destVC.searchBreweryState = self.state
     }
 
     // MARK: - Actions

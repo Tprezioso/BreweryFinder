@@ -11,7 +11,6 @@ import CoreLocation
 
 class BreweryListTableViewController: UITableViewController {
 
-    
     let locationManager = CLLocationManager()
     var userLat = 0.0
     var userLong = 0.0
@@ -34,6 +33,10 @@ class BreweryListTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        if let index = self.tableView.indexPathForSelectedRow{
+            self.tableView.deselectRow(at: index, animated: true)
+        }
         // This is where you need to add the call to search api and reload tableview
         print(searchBreweryName)
         print(searchBreweryCity)
@@ -169,6 +172,7 @@ class BreweryListTableViewController: UITableViewController {
     @IBAction func unwindToBreweryList(_ unwindSegue: UIStoryboardSegue) {
         _ = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
+        
     }
     
 }

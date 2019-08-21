@@ -11,6 +11,7 @@ import CoreLocation
 
 class BreweryListTableViewController: UITableViewController {
 
+    
     let locationManager = CLLocationManager()
     var userLat = 0.0
     var userLong = 0.0
@@ -26,6 +27,8 @@ class BreweryListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+
         locationAuthorization()
         
     }
@@ -35,7 +38,21 @@ class BreweryListTableViewController: UITableViewController {
         print(searchBreweryName)
         print(searchBreweryCity)
         print(searchBreweryState)
-        getUserLoacationData(city: searchBreweryCity, state: searchBreweryState)
+        
+        if searchBreweryName != "" || searchBreweryCity != "" && searchBreweryState != "" {
+            getUserLoacationData(city: searchBreweryCity, state: searchBreweryState)
+        }
+
+    }
+    
+    // MARK: - Refresh Controller
+    
+    @objc func refresh(sender:AnyObject) {
+        // Updating your data here...
+
+        self.getUserCity(latitude: userLat, longitude: userLong)
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
     }
     
     // Mark: - Map Stuff

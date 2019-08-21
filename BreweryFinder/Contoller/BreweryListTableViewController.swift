@@ -138,12 +138,7 @@ class BreweryListTableViewController: UITableViewController {
 
             if let indexPath = tableView.indexPathForSelectedRow {
                 destinationVC.detailBreweryArray = searchData[indexPath.row]
-            } else if segue.identifier == "search" {
-                let searchVC = segue.destination as! SearchViewController
-                searchVC.delegate = self as? SearchViewControllerDelegate
-                
             }
-
         }
         
     }
@@ -151,12 +146,9 @@ class BreweryListTableViewController: UITableViewController {
     @IBAction func unwindToBreweryList(_ unwindSegue: UIStoryboardSegue) {
         let sourceViewController = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
+        print()
     }
     
-    func update(_ name: String) {
-        print(name)
-    }
-
 }
 
 extension BreweryListTableViewController: CLLocationManagerDelegate {

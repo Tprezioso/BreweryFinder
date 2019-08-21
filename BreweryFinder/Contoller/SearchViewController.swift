@@ -8,16 +8,12 @@
 
 import UIKit
 
-protocol SearchViewControllerDelegate: AnyObject {
-    func update(_ name: String)
-}
 
 class SearchViewController: UIViewController {
     @IBOutlet weak var breweryNameTextfield: UITextField!
     @IBOutlet weak var breweryCityTextfield: UITextField!
     @IBOutlet weak var breweryStateTextfield: UITextField!
     
-    weak var delegate: SearchViewControllerDelegate!
     
     // MARK: - Life Cycle
     override func viewDidLoad() {

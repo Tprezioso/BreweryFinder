@@ -29,38 +29,16 @@ class SearchViewController: UIViewController {
         
     }
     
-
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    // MARK: - Actions
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destVC = segue.destination as! BreweryListTableViewController
         destVC.searchBreweryName = breweryNameTextfield.text!
-    }
     
-    @IBAction func searchButtonPressed(_ sender: Any) {
-        print("hello")
-        if let delegate = delegate{
-            delegate.update("cookie")
-       
-        }
- _ = navigationController?.popViewController(animated: true)
-        //        if let breweryListViewController = unwind(for: source, towards: BreweryListTableViewController) {
-//            self.breweryNameTextfield.text = breweryListViewController.contact
-//            if let name = self.breweryCityTextfield.text {
-//                delegate?.update(name)
-//            }
-//        }
     }
-    
+
+    // MARK: - Actions
+
     // MARK: - Touch Method for Keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         breweryNameTextfield.resignFirstResponder()

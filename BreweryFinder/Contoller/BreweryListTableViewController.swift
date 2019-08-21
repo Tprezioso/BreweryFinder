@@ -70,7 +70,7 @@ class BreweryListTableViewController: UITableViewController {
             // Code below replace params when done testing!
             // reversedGeoLocation.city reversedGeoLocation.state
             // Testing data in line below ...
-            // self.getUserLoacationData(city: "brooklyn", state: "new_york")
+             self.getUserLoacationData(city: "brooklyn", state: "new_york")
         }
 
         struct ReversedGeoLocation {
@@ -163,6 +163,7 @@ extension BreweryListTableViewController: CLLocationManagerDelegate {
         userLat = locValue.latitude
         userLong = locValue.longitude
          self.getUserCity(latitude: userLat, longitude: userLong)
+        manager.stopUpdatingLocation()
     }
 
 }

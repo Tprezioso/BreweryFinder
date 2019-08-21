@@ -26,8 +26,8 @@ class BreweryListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
 
+        self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         locationAuthorization()
         
     }
@@ -42,8 +42,10 @@ class BreweryListTableViewController: UITableViewController {
         print(searchBreweryCity)
         print(searchBreweryState)
         
-        if searchBreweryName != "" || searchBreweryCity != "" && searchBreweryState != "" {
+        if  searchBreweryCity != "" && searchBreweryState != "" {
             getUserLoacationData(city: searchBreweryCity, state: searchBreweryState)
+        } else if searchBreweryName != "" {
+            getUserLoacationData(name: searchBreweryName)
         }
 
     }
@@ -139,6 +141,18 @@ class BreweryListTableViewController: UITableViewController {
     
     }
 
+    func getUserLoacationData(name: String) {
+        DispatchQueue.main.async {
+            self.clientCall.searchBreweryByName(name: name, completion: { (json) in
+                self.searchData = json!
+                self.tableView.reloadData()
+
+            })
+        }
+        
+    }
+
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

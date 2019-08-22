@@ -43,9 +43,9 @@ class SearchViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         convertForSearch()
         let destVC = segue.destination as! BreweryListTableViewController
-        destVC.searchBreweryName = self.name
-        destVC.searchBreweryCity = self.city
-        destVC.searchBreweryState = self.state
+        destVC.searchBreweryName = self.name.trimmingTrailingSpaces()
+        destVC.searchBreweryCity = self.city.trimmingTrailingSpaces()
+        destVC.searchBreweryState = self.state.trimmingTrailingSpaces()
     }
 
     // MARK: - Actions
@@ -56,6 +56,22 @@ class SearchViewController: UIViewController {
         breweryCityTextfield.resignFirstResponder()
         breweryStateTextfield.resignFirstResponder()
     }
+}
+
+extension String {
+    
+    func trimmingTrailingSpaces() -> String {
+        var t = self
+        while t.hasSuffix(" ") {
+            t = "" + t.dropLast()
+        }
+        return t
+    }
+    
+    mutating func trimmedTrailingSpaces() {
+        self = self.trimmingTrailingSpaces()
+    }
+    
 }
 
     // MARK: - UITextFieldDelegate

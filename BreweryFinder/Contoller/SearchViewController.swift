@@ -105,9 +105,9 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     func convertForSearch() {
-        self.name = breweryNameTextfield.text!.lowercased()
-        self.city = breweryCityTextfield.text!.lowercased()
-        self.state = breweryStateTextfield.text!.lowercased()
+        self.name = breweryNameTextfield.text!.lowercased().trimmingTrailingSpaces()
+        self.city = breweryCityTextfield.text!.lowercased().trimmingTrailingSpaces()
+        self.state = breweryStateTextfield.text!.lowercased().trimmingTrailingSpaces()
         
         self.name = name.replacingOccurrences(of: " ", with: "_")
         self.city = city.replacingOccurrences(of: " ", with: "_")
@@ -119,9 +119,9 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         convertForSearch()
         let destVC = segue.destination as! BreweryListTableViewController
-        destVC.searchBreweryName = self.name.trimmingTrailingSpaces()
-        destVC.searchBreweryCity = self.city.trimmingTrailingSpaces()
-        destVC.searchBreweryState = self.state.trimmingTrailingSpaces()
+        destVC.searchBreweryName = self.name
+        destVC.searchBreweryCity = self.city
+        destVC.searchBreweryState = self.state
     }
 
     // MARK: - Actions

@@ -90,9 +90,9 @@ class BreweryListTableViewController: UITableViewController {
             // TODO: - need to use another use global variable to fix constant call of get user
 
             // Code below replace params when done testing!
-            // reversedGeoLocation.city reversedGeoLocation.state
+            //  reversedGeoLocation.state"brooklyn"new_york
             // Testing data in line below ...
-             self.getUserLoacationData(city: "brooklyn", state: "new_york")
+             self.getUserLoacationData(city: "reversedGeoLocation.city", state: "reversedGeoLocation.state")
         }
 
         struct ReversedGeoLocation {

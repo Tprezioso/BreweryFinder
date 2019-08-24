@@ -42,11 +42,6 @@ class BreweryListTableViewController: UITableViewController {
         print(searchBreweryCity)
         print(searchBreweryState)
         
-        if  searchBreweryCity != "" && searchBreweryState != "" {
-            getUserLoacationData(city: searchBreweryCity, state: searchBreweryState)
-        } else if searchBreweryName != "" {
-            getUserLoacationData(name: searchBreweryName)
-        }
 
     }
     
@@ -186,7 +181,12 @@ class BreweryListTableViewController: UITableViewController {
     @IBAction func unwindToBreweryList(_ unwindSegue: UIStoryboardSegue) {
         _ = unwindSegue.source
         // Use data from the view controller which initiated the unwind segue
-        
+        if  searchBreweryCity != "" && searchBreweryState != "" {
+            getUserLoacationData(city: searchBreweryCity, state: searchBreweryState)
+        } else if searchBreweryName != "" {
+            getUserLoacationData(name: searchBreweryName)
+        }
+
     }
     
 }

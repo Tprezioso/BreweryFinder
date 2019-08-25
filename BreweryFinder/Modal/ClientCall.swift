@@ -22,7 +22,7 @@ class ClientCall {
             if response.result.isSuccess {
                 
                 let data = response.result.value! as! [[String: AnyObject]]
-                print(data[0]["name"])
+//                print(data[0]["name"])
                 self.breweryByNameURL = "https://api.openbrewerydb.org/breweries?by_name="
                 completion(data)
             }
@@ -31,8 +31,6 @@ class ClientCall {
     }
     
     // MARK: - Search by City and State
-    #warning("This need to be fixed to get a list of breweries for user on load")
-    
     func searchBreweryByCity(city: String, state: String, completion: @escaping WebServiceResponse) {
         let breweryByCityURL = "https://api.openbrewerydb.org/breweries?by_city=\(city)&by_state=\(state)"
 

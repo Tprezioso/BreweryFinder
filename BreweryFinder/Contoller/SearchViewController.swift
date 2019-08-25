@@ -94,8 +94,8 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var pickerView = UIPickerView()
-        pickerView.delegate = (self as! UIPickerViewDelegate)
+        let pickerView = UIPickerView()
+        pickerView.delegate = (self as UIPickerViewDelegate)
         breweryStateTextfield.inputView = pickerView
         
         breweryNameTextfield.delegate = self

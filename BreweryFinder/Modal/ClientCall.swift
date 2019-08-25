@@ -23,6 +23,7 @@ class ClientCall {
                 
                 let data = response.result.value! as! [[String: AnyObject]]
                 print(data[0]["name"])
+                self.breweryByNameURL = "https://api.openbrewerydb.org/breweries?by_name="
                 completion(data)
             }
         }

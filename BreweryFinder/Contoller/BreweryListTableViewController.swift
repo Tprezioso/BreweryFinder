@@ -140,6 +140,7 @@ class BreweryListTableViewController: UITableViewController {
         DispatchQueue.main.async {
             self.clientCall.searchBreweryByName(name: name, completion: { (json) in
                 self.searchData = json!
+                self.searchBreweryName = ""
                 self.tableView.reloadData()
 
             })

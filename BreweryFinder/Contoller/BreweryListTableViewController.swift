@@ -38,24 +38,22 @@ class BreweryListTableViewController: UITableViewController {
             self.tableView.deselectRow(at: index, animated: true)
         }
         // This is where you need to add the call to search api and reload tableview
-        print(searchBreweryName)
-        print(searchBreweryCity)
-        print(searchBreweryState)
-        
+//        print(searchBreweryName)
+//        print(searchBreweryCity)
+//        print(searchBreweryState)
 
     }
     
     // MARK: - Refresh Controller
     
     @objc func refresh(sender:AnyObject) {
-        // Updating your data here...
-
         self.getUserCity(latitude: userLat, longitude: userLong)
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
     }
     
     // Mark: - Map Stuff
+
     func locationAuthorization() {
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.requestWhenInUseAuthorization()
@@ -67,7 +65,6 @@ class BreweryListTableViewController: UITableViewController {
         }
 
     }
-    
     
     func getUserCity(latitude: Double, longitude: Double) {
         let location = CLLocation(latitude: userLat, longitude: userLong)

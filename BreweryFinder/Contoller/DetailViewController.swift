@@ -25,6 +25,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     let annotation = MKPointAnnotation()
 
     // MARK: - Life Cycle
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -89,6 +90,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     }
    
     // MARK: - Phone call
+    
     @IBAction func callBrewery(_ sender: Any) {
         guard let number = URL(string: "tel://" + "3472183350") else { return }
         UIApplication.shared.open(number)

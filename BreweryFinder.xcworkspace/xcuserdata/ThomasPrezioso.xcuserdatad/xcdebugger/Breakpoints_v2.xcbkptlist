@@ -20,43 +20,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BreweryFinder/Contoller/BreweryListTableViewController.swift"
-            timestampString = "588464419.950914"
+            timestampString = "588650880.6096621"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "141"
             endingLineNumber = "141"
-            landmarkName = "getUserLoacationData(name:)"
+            landmarkName = "getUserLoacationData(city:state:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in BreweryFinder.BreweryListTableViewController.getUserLoacationData(name: Swift.String) -&gt; ()"
+                  symbolName = "closure #1 () -&gt; () in BreweryFinder.BreweryListTableViewController.getUserLoacationData(city: Swift.String, state: Swift.String) -&gt; ()"
                   moduleName = "BreweryFinder"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ThomasPrezioso/Desktop/develop/devProjects/iOSProjects/BreweryFinder/BreweryFinder/Contoller/BreweryListTableViewController.swift"
-                  timestampString = "588454001.136151"
+                  timestampString = "588648885.4495569"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "141"
-                  endingLineNumber = "141"
-                  offsetFromSymbolStart = "37">
+                  startingLineNumber = "128"
+                  endingLineNumber = "128"
+                  offsetFromSymbolStart = "180">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;&gt;) -&gt; () in closure #1 () -&gt; () in BreweryFinder.BreweryListTableViewController.getUserLoacationData(name: Swift.String) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;&gt;) -&gt; () in closure #1 () -&gt; () in BreweryFinder.BreweryListTableViewController.getUserLoacationData(city: Swift.String, state: Swift.String) -&gt; ()"
                   moduleName = "BreweryFinder"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ThomasPrezioso/Desktop/develop/devProjects/iOSProjects/BreweryFinder/BreweryFinder/Contoller/BreweryListTableViewController.swift"
-                  timestampString = "588454001.138647"
+                  timestampString = "588648885.4522049"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "142"
-                  endingLineNumber = "142"
-                  offsetFromSymbolStart = "86">
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "104">
                </Location>
             </Locations>
          </BreakpointContent>

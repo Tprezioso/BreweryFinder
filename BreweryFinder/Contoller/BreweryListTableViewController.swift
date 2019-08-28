@@ -77,14 +77,27 @@ class BreweryListTableViewController: UITableViewController {
             }
             
             let reversedGeoLocation = ReversedGeoLocation(with: placemark)
-            print(reversedGeoLocation.city)
+            print(reversedGeoLocation.formattedAddress)
 
             // TODO: - need to use another use global variable to fix constant call of get user
 
             // Code below replace params when done testing!
             //  reversedGeoLocation.state"brooklyn"new_york
             // Testing data in line below ...
-             self.getUserLoacationData(city: "reversedGeoLocation.city", state: "reversedGeoLocation.state")
+            let geocoder = CLGeocoder()
+            geocoder.geocodeAddressString(reversedGeoLocation.zipCode) {
+                (placemarks, error) -> Void in
+                // Placemarks is an optional array of CLPlacemarks, first item in array is best guess of Address
+                
+                if let placemark = placemarks?[0] {
+                    
+                    print(placemark.subLocality)
+                    
+                    self.searchBreweryState = placemark.subLocality!
+                }
+                
+            }
+             self.getUserLoacationData(city: self.searchBreweryCity.trimmingTrailingSpaces(), state: "\(reversedGeoLocation.state)".trimmingTrailingSpaces())
         }
 
         struct ReversedGeoLocation {
@@ -200,3 +213,4 @@ extension BreweryListTableViewController: CLLocationManagerDelegate {
     }
 
 }
+

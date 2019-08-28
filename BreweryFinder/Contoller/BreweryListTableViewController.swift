@@ -77,7 +77,7 @@ class BreweryListTableViewController: UITableViewController {
             }
             
             let reversedGeoLocation = ReversedGeoLocation(with: placemark)
-            print(reversedGeoLocation.formattedAddress)
+//            print(reversedGeoLocation.formattedAddress)
 
             // TODO: - need to use another use global variable to fix constant call of get user
 
@@ -91,13 +91,22 @@ class BreweryListTableViewController: UITableViewController {
                 
                 if let placemark = placemarks?[0] {
                     
-                    print(placemark.subLocality)
+                    print(placemark.subLocality!)
                     
-                    self.searchBreweryState = placemark.subLocality!
+                    self.searchBreweryCity = placemark.subLocality!.lowercased().trimmingTrailingSpaces().replacingOccurrences(of: " ", with: "_")
                 }
                 
             }
-             self.getUserLoacationData(city: self.searchBreweryCity.trimmingTrailingSpaces(), state: "\(reversedGeoLocation.state)".trimmingTrailingSpaces())
+            
+            for state in statesDictionary {
+                if reversedGeoLocation.state == state.value {
+                    self.searchBreweryState = state.key.lowercased().trimmingTrailingSpaces().replacingOccurrences(of: " ", with: "_")
+                }
+
+            }
+            
+            self.getUserLoacationData(city: self.searchBreweryCity, state: self.searchBreweryState)
+            print(self.searchBreweryState)
         }
 
         struct ReversedGeoLocation {

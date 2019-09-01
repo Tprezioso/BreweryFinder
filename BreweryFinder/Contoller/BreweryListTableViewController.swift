@@ -22,6 +22,8 @@ class BreweryListTableViewController: UITableViewController {
     var searchBreweryState = ""
     var searchBreweryCity = ""
     
+    var brewery = BreweryDBAPICall()
+    
     // Mark: - Life Cycle
     
     override func viewDidLoad() {
@@ -29,7 +31,6 @@ class BreweryListTableViewController: UITableViewController {
 
         self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         locationAuthorization()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +70,8 @@ class BreweryListTableViewController: UITableViewController {
     func getUserCity(latitude: Double, longitude: Double) {
         let location = CLLocation(latitude: userLat, longitude: userLong)
         CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
-            
+            self.brewery.getLoacalBrewey(lat: self.userLat, lng: self.userLong)
+
             guard let placemark = placemarks?.first else {
                 let errorString = error?.localizedDescription ?? "Unexpected Error"
                 print("Unable to reverse geocode the given location. Error: \(errorString)")
